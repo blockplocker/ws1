@@ -10,7 +10,7 @@
 
 <body>
 
-    <?php require 'navbar.php'; ?>
+    <?php require 'functions/navbar.php'; ?>
     <?php require "functions/latestRecords.php"; ?>
     <?php //require "footer.php"; ?>
 

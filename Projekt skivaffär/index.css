@@ -25,7 +25,7 @@ body {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 1rem;
   text-decoration: none;
 }
 .navbar a:hover {
@@ -35,7 +35,7 @@ body {
 .main {
   padding: 10rem;
   background-color: #252525;
-  min-height: 100vh;
+  min-height: calc(100vh - 46px);
 }
 
 .senaste ul {
@@ -53,4 +53,16 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #111;
 }/*# sourceMappingURL=index.css.map */

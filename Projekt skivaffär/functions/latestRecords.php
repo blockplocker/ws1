@@ -26,6 +26,8 @@
                     echo "<li>Artist: " . $row['name'] . "</li>";
                     echo "<li>Release year: " . $row['release_year'] . "</li>";
                     echo "<li>Genre: " . $row['genre'] . "</li>";
+                    echo "<li>Rating: " . $row['rating'] . "</li>";
+                    echo "<li>låtar: " . $row['låtlista'] . "</li>";
                     echo "<li>Updated at: " . $row['updated_at'] . "</li>";
                     echo "</ul>";
 
