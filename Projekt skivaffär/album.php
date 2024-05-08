@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Album</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<?php include 'functions/navbar.php'; ?>
+<?php require 'functions/navbar.php'; ?>
 <div class="main">
-    <?php include 'functions/album/add_album.php'; ?>
+    <?php
+    require 'functions/add_album.php';
+    require 'functions/show_album.php';
+    ?>
 </div>
 
 </body>

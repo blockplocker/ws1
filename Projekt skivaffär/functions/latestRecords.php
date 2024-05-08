@@ -1,43 +1,36 @@
 <div class="main">
+    <h1>Välkommen till vår skivaffär!</h1>
+    <p>Här kan du hitta information om de senaste albumen och artisterna.</p>
+    <div class="senaste">
+        <?php
+        require "connector.php";
 
-        <h1>Välkommen till vår skivaffär!</h1>
-        <p>Här kan du hitta information om de senaste albumen och artisterna.</p>
-        <div class="senaste">
+        try {
+            // Connect to the database
+            $pdo = connectToDb();
 
-            <?php
-            require "connector.php";
+            // Prepare a SQL query to fetch latest albums
+            $sql = "SELECT * FROM latest";
 
-            try {
-                // Anslut till databasen
-                $pdo = connectToDb();
+            // Prepare and execute the SQL query with PDO
+            $stmt = $pdo->query($sql);
 
-                // Förbered en SQL-fråga som ska köras mot databasen
-                $sql = "SELECT * from latest";
-
-                // Förbered och kör SQL-frågan med PDO::query()
-                $stmt = $pdo->query($sql);
-
-                //Använder fetch() för att hämta en rad i taget
-                while ($row = $stmt->fetch()) {
-                    echo "<img src=" . $row["album_img"] . " alt='album bild' height=100  width=100>";
-
-                    echo "<ul>";
-                    echo "<li>Title: " . $row['title'] . "</li>";
-                    echo "<li>Artist: " . $row['name'] . "</li>";
-                    echo "<li>Release year: " . $row['release_year'] . "</li>";
-                    echo "<li>Genre: " . $row['genre'] . "</li>";
-                    echo "<li>Rating: " . $row['rating'] . "</li>";
-                    echo "<li>låtar: " . $row['låtlista'] . "</li>";
-                    echo "<li>Updated at: " . $row['updated_at'] . "</li>";
-                    echo "</ul>";
-
-                }
-                // Fånga upp eventuella fel från PHP PDO
-            } catch (PDOException $e) {
-                echo "<p>Anslutning misslyckades: " . $e->getMessage() . "</>";
+            // Use fetch() to retrieve one row at a time
+            while ($row = $stmt->fetch()) {
+                echo "<img src='" . htmlspecialchars($row["album_img"]) . "' alt='album bild' height='100'  width='100'>";
+                echo "<ul>";
+                echo "<li>Title: " . htmlspecialchars($row['title']) . "</li>";
+                echo "<li>Artist: " . htmlspecialchars($row['name']) . "</li>";
+                echo "<li>Release year: " . htmlspecialchars($row['release_year']) . "</li>";
+                echo "<li>Genre: " . htmlspecialchars($row['genre']) . "</li>";
+                echo "<li>Rating: " . htmlspecialchars($row['rating']) . "</li>";
+                echo "<li>Låtar: " . htmlspecialchars($row['låtlista']) . "</li>"; 
+                echo "<li>Updated at: " . htmlspecialchars($row['updated_at']) . "</li>";
+                echo "</ul>";
             }
-
-            ?>
-
-</div>
+        } catch (PDOException $e) {
+            echo "<p>Anslutning misslyckades: " . $e->getMessage() . "</p>";
+        }
+        ?>
     </div>
+</div>

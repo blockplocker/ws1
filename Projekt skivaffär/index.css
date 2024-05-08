@@ -2,13 +2,13 @@
 ::after,
 ::before {
   box-sizing: border-box;
-  color: white;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  color: white;
 }
 
 .navbar ul {
@@ -37,9 +37,12 @@ body {
   background-color: #252525;
   min-height: calc(100vh - 46px);
 }
+.main ul {
+  list-style: none;
+}
 
 .senaste ul {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -65,4 +68,15 @@ button {
 
 button:hover {
   background-color: #111;
+}
+
+input,
+option,
+select {
+  padding: 1rem;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+  color: #111;
 }/*# sourceMappingURL=index.css.map */

@@ -36,4 +36,5 @@ function remove_artist($id)
     $stmtAlbums = null;
     $stmtArtist = null;
     $pdo = null;
+    header("location: artist.php");
 }
