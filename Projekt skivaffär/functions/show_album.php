@@ -23,14 +23,26 @@ try {
         echo "<li>Rating: " . htmlspecialchars($row['rating']) . "</li>";
         echo "<li>Låtar: " . htmlspecialchars($row['låtlista']) . "</li>"; 
         echo "<li>Updated at: " . htmlspecialchars($row['updated_at']) . "</li>";
+
+        // Generate a form for each delete button, passing in the ID of the record as a hidden input field
+        echo "<form method='post' action=''>";
+            echo "<input type='hidden' name='album_id' value='" . htmlspecialchars($row['album_id']) . "'>";
+
+            echo "<input type='number' name='rating' id='rating' min='1' max='5' required>";
+            
+            echo "<button type='submit' name='rate'>Rate album</button>";
+
+            echo "</form>";
+
         echo "</ul>";
     }
 
     // Handle form submission for deletion
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    //     $album_id = $_POST['album_id'];
-    //     remove_album($album_id);
-    // }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['rate'])) {
+        $album_id = $_POST['album_id'];
+        $rating = $_POST['rating'];
+        rate_album($album_id, $rating);
+    }
 
     // Catch any errors from PHP PDO
 } catch (PDOException $e) {
