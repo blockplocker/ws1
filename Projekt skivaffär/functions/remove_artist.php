@@ -38,3 +38,9 @@ function remove_artist($id)
     $pdo = null;
     header("location: artist.php");
 }
+?>
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this artist?");
+    }
+</script>

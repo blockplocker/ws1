@@ -42,9 +42,11 @@ body {
     padding: 10rem;
     background-color: #252525;
     min-height: calc(100vh - 46px);
+    // // height: fit-content;
 
     ul {
         list-style: none;
+        float: left;
     }
 }
 
@@ -92,3 +94,4 @@ select {
     font-size: large;
     color: #111;
 }
+

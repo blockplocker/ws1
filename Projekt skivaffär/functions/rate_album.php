@@ -35,4 +35,5 @@ function rate_album($album_id, $rating)
 
     $stmtAlbum = null;
     $pdo = null;
+    header("location: album.php");
 }

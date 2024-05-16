@@ -8,8 +8,8 @@ include "remove_artist.php";
  *
  * @return void
  */
-function Show_artists()
-{
+function Show_artists() {
+    require "timeElapsed.php";
     try {
         // Connect to the database
         $pdo = connectToDb();
@@ -26,7 +26,7 @@ function Show_artists()
             // Escape output to prevent XSS
             echo "<li>Artist: " . htmlspecialchars($row['name']) . "</li>";
             echo "<li>Bio: " . htmlspecialchars($row['bio']) . "</li>";
-            echo "<li>Updated at: " . htmlspecialchars($row['updated_at']) . "</li>";
+            echo "<li>Updaterad: " . htmlspecialchars(timeElapsed($row['updated_at'])) . "</li>";
             // Generate a form for each delete button
             echo "<form method='post' action=''>";
             echo "<input type='hidden' name='artist_id' value='" . htmlspecialchars($row['artist_id']) . "'>";
@@ -34,6 +34,15 @@ function Show_artists()
             echo "<button type='submit' name='delete' onclick='return confirmDelete()'>Remove Artist</button>";
 
             echo "</form>";
+
+            
+        echo "<form method='post' action='./uppdate_artist.php'>";
+        echo "<input type='hidden' name='artist_id' value='" . htmlspecialchars($row['artist_id']) . "'>";
+
+        echo "<button type='submit' name='update_artist'>Modifiera artist</button>";
+
+        echo "</form>";
+
             echo "</ul>";
         }
 

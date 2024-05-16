@@ -8,6 +8,9 @@
         <label for="genre">Genre:</label>
         <input type="text" name="genre" id="genre" required>
 
+        <label for="img">Ablum img:</label>
+        <input type="text" name="img" id="img" value="https://ifi.se/wp-content/uploads/bfi_thumb/bild-kommer-inom-kort-okel8mz38kislcyzsf0o6rys81s0f3ypg9wi34odfw.jpg" required>
+
         <label for="release_year">År:</label>
         <?php
         $year = date('Y');
@@ -48,10 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
         $release_year = strip_tags(trim($_POST['release_year']));
         $artist_id = strip_tags(trim($_POST['artist_id']));
         $current_time = date('Y-m-d H:i:s');
+        $album_img =strip_tags(trim($_POST['img']));
 
         // Check if the fields are empty
-        if (!empty($title) && !empty($genre) && !empty($release_year) && !empty($artist_id) && !empty($current_time)) {
-            $sql = "INSERT INTO albums (title, genre, release_year, artist_id, updated_at) VALUES (:title, :genre, :release_year, :artist_id, :current_time)";
+        if (!empty($title) && !empty($genre) && !empty($release_year) && !empty($artist_id) && !empty($current_time) && !empty($album_img)){
+            $sql = "INSERT INTO albums (title, genre, release_year, artist_id, updated_at, album_img) VALUES (:title, :genre, :release_year, :artist_id, :current_time, :album_img)";
 
             $stmt = $pdo->prepare($sql);
 
@@ -61,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
             $stmt->bindParam(':release_year', $release_year);
             $stmt->bindParam(':artist_id', $artist_id);
             $stmt->bindParam(':current_time', $current_time);
+            $stmt->bindParam(':album_img', $album_img);
 
             $stmt->execute();
 

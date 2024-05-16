@@ -39,6 +39,7 @@ body {
 }
 .main ul {
   list-style: none;
+  float: left;
 }
 
 .senaste ul {
