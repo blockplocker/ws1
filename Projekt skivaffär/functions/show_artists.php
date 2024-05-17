@@ -15,7 +15,8 @@ function Show_artists() {
         $pdo = connectToDb();
 
         // Prepare a SQL query to be executed against the database
-        $sql = "SELECT * FROM artists order by artist_id desc";
+        // $sql = "SELECT * FROM artists order by artist_id desc";
+        $sql = "SELECT * FROM latest_count";
 
         // Prepare and execute the SQL query with PDO::query()
         $stmt = $pdo->query($sql);
@@ -26,6 +27,7 @@ function Show_artists() {
             // Escape output to prevent XSS
             echo "<li>Artist: " . htmlspecialchars($row['name']) . "</li>";
             echo "<li>Bio: " . htmlspecialchars($row['bio']) . "</li>";
+            echo "<li>Antal skivor: " . htmlspecialchars($row['album_count']) . "</li>";
             echo "<li>Updaterad: " . htmlspecialchars(timeElapsed($row['updated_at'])) . "</li>";
             // Generate a form for each delete button
             echo "<form method='post' action=''>";

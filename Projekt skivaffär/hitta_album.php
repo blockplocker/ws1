@@ -38,7 +38,7 @@
         $artist_id = $_POST['artist'];
         try {
             $pdo = connectToDb();
-            $sql = "SELECT * FROM albums WHERE artist_id = :artist_id";
+            $sql = "SELECT title FROM albums WHERE artist_id = :artist_id";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':artist_id', $artist_id);
             $stmt->execute();

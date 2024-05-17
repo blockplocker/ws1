@@ -12,6 +12,7 @@
 
             // Prepare a SQL query to fetch latest albums
             $sql = "SELECT * FROM latest";
+            // $sql = "SELECT * FROM latest_count";
 
             // Prepare and execute the SQL query with PDO
             $stmt = $pdo->query($sql);
@@ -25,7 +26,8 @@
                 echo "<li>Release year: " . htmlspecialchars($row['release_year']) . "</li>";
                 echo "<li>Genre: " . htmlspecialchars($row['genre']) . "</li>";
                 echo "<li>Rating: " . htmlspecialchars($row['rating']) . "</li>";
-                echo "<li>Låtar: " . htmlspecialchars($row['låtlista']) . "</li>"; 
+                // echo "<li>Låtar: " . htmlspecialchars($row['låtlista']) . "</li>"; 
+                // echo "<li>Skivor: " . htmlspecialchars($row['album_count']) . "</li>"; 
                 echo "<li>Updaterad: " . htmlspecialchars(timeElapsed($row['updated_at'])) . "</li>";
                 echo "</ul>";
             }

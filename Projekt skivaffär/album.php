@@ -12,6 +12,7 @@
     <?php
     require 'functions/add_album.php';
     require 'functions/show_album.php';
+    show_album()
     ?>
 </div>
 
