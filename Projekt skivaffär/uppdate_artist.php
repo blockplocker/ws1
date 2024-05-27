@@ -31,7 +31,7 @@
                     <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($artist['name']); ?>" required><br>
                     <label for="bio">Bio:</label>
                     <input type="text" name="bio" id="bio" value="<?php echo htmlspecialchars($artist['bio']); ?>"><br>
-                    <button type="submit">Update Artist</button>
+                    <button type="submit" >Update Artist</button>
                 </form>
                 <?php
             } else {
@@ -40,6 +40,7 @@
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+    
 
         // Process the form submission when the Update Artist button is clicked
         try {

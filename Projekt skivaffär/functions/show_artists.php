@@ -24,12 +24,12 @@ function Show_artists() {
         // Use fetch() to retrieve one row at a time
         while ($row = $stmt->fetch()) {
             echo "<ul>";
-            // Escape output to prevent XSS
+            
             echo "<li>Artist: " . htmlspecialchars($row['name']) . "</li>";
             echo "<li>Bio: " . htmlspecialchars($row['bio']) . "</li>";
             echo "<li>Antal skivor: " . htmlspecialchars($row['album_count']) . "</li>";
             echo "<li>Updaterad: " . htmlspecialchars(timeElapsed($row['updated_at'])) . "</li>";
-            // Generate a form for each delete button
+            // Generate a form for each delete button, passing in the ID of the artist as a hidden input field
             echo "<form method='post' action=''>";
             echo "<input type='hidden' name='artist_id' value='" . htmlspecialchars($row['artist_id']) . "'>";
 
@@ -38,6 +38,7 @@ function Show_artists() {
             echo "</form>";
 
             
+            // Generate a form for each update button, passing in the ID of the artist as a hidden input field
         echo "<form method='post' action='./uppdate_artist.php'>";
         echo "<input type='hidden' name='artist_id' value='" . htmlspecialchars($row['artist_id']) . "'>";
 

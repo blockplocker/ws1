@@ -57,9 +57,12 @@
             echo "Error: " . $e->getMessage();
         }
     }
-    // else {
-    //     echo "No album selected.";
-    // }
+    else {
+        echo "No album selected.";
+        
+        //Go to album.php if no album was selected or when you uppdate an album
+        header("location:album.php");
+    }
     
 
     // Check if the form has been submitted and the update button has been clicked
@@ -80,7 +83,6 @@
             if (!empty($title) && !empty($genre) && !empty($release_year) && !empty($artist_id) && !empty($album_id) && !empty($updated_at) && !empty($album_img)) {
                 $sql = "UPDATE albums SET title = :title, genre = :genre, release_year = :release_year, artist_id = :artist_id, updated_at = :updated_at, album_img = :album_img where album_id = :album_id";
 
-                // $sql = "UPDATE albums SET title = 'title', genre = 'test', release_year = 0, artist_id = 1, updated_at = '0000-05-15 09:11:13', album_img = '69' WHERE album_id = 29";
     
                 $stmt = $pdo->prepare($sql);
 

@@ -6,8 +6,7 @@
  * @param [type] $id
  * @return void
  */
-function remove_artist($id)
-{
+function remove_artist($id) {
     $pdo = connectToDb();
 
     try {
@@ -36,7 +35,7 @@ function remove_artist($id)
     $stmtAlbums = null;
     $stmtArtist = null;
     $pdo = null;
-    header("location: artist.php");
+    // header("location: artist.php");
 }
 ?>
 <script>

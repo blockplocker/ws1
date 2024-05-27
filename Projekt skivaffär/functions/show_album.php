@@ -32,7 +32,7 @@ function show_album()
             echo "<li>Rating: " . htmlspecialchars($row['rating']) . "</li>";
             echo "<li>Updated at: " . htmlspecialchars(timeElapsed($row['updated_at'])) . "</li>";
 
-            // Generate a form for each delete button, passing in the ID of the record as a hidden input field
+            // Generate a form for each rate button, passing in the ID of the record as a hidden input field
             echo "<form method='post' action=''>";
             echo "<input type='hidden' name='album_id' value='" . htmlspecialchars($row['album_id']) . "'>";
             echo "<input type='range' name='rating' id='rating' min='1' max='5' required>";

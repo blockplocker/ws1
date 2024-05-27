@@ -20,7 +20,7 @@
         <label for="artist_id">Artist:</label>
         <select name="artist_id" id="artist_id">
             <?php
-            include "functions/connector.php";
+            require_once "functions/connector.php";
 
             try {
                 $pdo = connectToDb();
@@ -43,38 +43,25 @@
 // Check if the form has been submitted and the add button has been clicked
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
     try {
+
+        require_once "execute_sql.php";
+
         $pdo = connectToDb();
 
-        // Get the values from the form and sanitise them
-        $title = strip_tags(trim($_POST['title']));
-        $genre = strip_tags(trim($_POST['genre']));
-        $release_year = strip_tags(trim($_POST['release_year']));
-        $artist_id = strip_tags(trim($_POST['artist_id']));
-        $current_time = date('Y-m-d H:i:s');
-        $album_img =strip_tags(trim($_POST['img']));
+        // Get the values from the form and sanitise them into an array
+        $data = [
+            'title' => strip_tags(trim($_POST['title'])),
+            'genre' => strip_tags(trim($_POST['genre'])),
+            'release_year' => strip_tags(trim($_POST['release_year'])),
+            'artist_id' => strip_tags(trim($_POST['artist_id'])),
+            'current_time' => date('Y-m-d H:i:s'),
+            'album_img' => strip_tags(trim($_POST['img']))
+        ];
 
-        // Check if the fields are empty
-        if (!empty($title) && !empty($genre) && !empty($release_year) && !empty($artist_id) && !empty($current_time) && !empty($album_img)){
-            $sql = "INSERT INTO albums (title, genre, release_year, artist_id, updated_at, album_img) VALUES (:title, :genre, :release_year, :artist_id, :current_time, :album_img)";
+        $sql = "INSERT INTO albums (title, genre, release_year, artist_id, updated_at, album_img) VALUES (:title, :genre, :release_year, :artist_id, :current_time, :album_img)";
 
-            $stmt = $pdo->prepare($sql);
+        insertIntoDatabase($pdo, $data, $sql);
 
-            // Bind the values to named placeholders
-            $stmt->bindParam(':title', $title);
-            $stmt->bindParam(':genre', $genre);
-            $stmt->bindParam(':release_year', $release_year);
-            $stmt->bindParam(':artist_id', $artist_id);
-            $stmt->bindParam(':current_time', $current_time);
-            $stmt->bindParam(':album_img', $album_img);
-
-            $stmt->execute();
-
-            echo "<p>Album tillagd</p>";
-
-        } else {
-            //Display error if there are empty fields
-            echo "<p>Alla fält måste vara ifyllda</p>";
-        }
     } catch (PDOException $e) {
         // Display an error message if there is a problem connecting to the database
         echo "<p>Anslutning misslyckades: " . $e->getMessage() . "</p>";
