@@ -10,13 +10,13 @@
 <body>
     
 <!-- include navbar -->
-<?php require 'functions/navbar.php'; ?>
+<?php require_once 'functions/navbar.php'; ?>
 <div class="main">
     <?php
     // include add album
-    require 'functions/add_album.php';
+    require_once 'functions/add_album.php';
     // include show album
-    require 'functions/show_album.php';
+    require_once 'functions/show_album.php';
     // call show_album
     show_album()
     ?>

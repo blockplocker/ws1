@@ -6,14 +6,14 @@
     <title>Update Album</title>
 </head>
 <body>
-<?php require 'functions/navbar.php'; ?>
+<?php require_once 'functions/navbar.php'; ?>
 
 <div class="main">
 
     <h1>Update Album</h1>
     <?php
     // Inkludera databasanslutningsfilen
-    include "functions/connector.php";
+    require_once "functions/connector.php";
 
     // Kontrollera om ett album-id har skickats via POST
     if (isset($_POST['update_album'])) {

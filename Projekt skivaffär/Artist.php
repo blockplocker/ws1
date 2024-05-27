@@ -9,13 +9,13 @@
 </head>
 <body>
 <!-- include navbar -->
-<?php require 'functions/navbar.php'; ?>
+<?php require_once 'functions/navbar.php'; ?>
 <div class="main">
     <?php
     // include add artist
-    require 'functions/add_artist.php';
+    require_once 'functions/add_artist.php';
     // include show artists
-    require 'functions/show_artists.php';
+    require_once 'functions/show_artists.php';
     // call show_artists
     show_artists()
         ?>

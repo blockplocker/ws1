@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Include the navbar.php file to show navbar -->
-    <?php require 'functions/navbar.php'; ?>
+    <?php require_once 'functions/navbar.php'; ?>
 
     <div class="main">
         <!-- Form to select an artist and view their albums -->
@@ -21,7 +21,7 @@
             <select name="artist" id="artist">
                 <?php
                 // Include the connector.php file to connect to the database
-                include "functions/connector.php";
+                require_once "functions/connector.php";
                 
                 try {
                     // Connect to the database

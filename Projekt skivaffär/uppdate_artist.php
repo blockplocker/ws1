@@ -1,10 +1,10 @@
-<?php require 'functions/navbar.php'; ?>
+<?php require_once 'functions/navbar.php'; ?>
 
 <div class="main">
     <h1>Update Artist</h1>
     <?php
     // Inkludera databasanslutningsfilen
-    include "functions/connector.php";
+    require_once "functions/connector.php";
 
     // Kontrollera om ett artist-id har skickats via post
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
