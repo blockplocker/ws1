@@ -2,9 +2,11 @@
     <h1>Välkommen till vår skivaffär!</h1>
     <p>Här kan du hitta information om de senaste albumen och artisterna.</p>
     <div class="senaste">
+        
         <?php
-        require "connector.php";
-        require "timeElapsed.php";
+
+        require_once "connector.php";
+        require_once "timeElapsed.php";
 
         try {
             // Connect to the database

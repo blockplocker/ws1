@@ -1,4 +1,4 @@
-<<?php 
+<?php 
 
 /**
  *  funktion för att beräkna tiden sedan ett datum
@@ -18,12 +18,13 @@ function timeElapsed($date) {
     // Beräkna skillnaden i sekunder mellan det angivna datumet och dagens datum
     $difference = time() - $timestamp;
 
-    // Konvertera skillnaden till år, månader, veckor, dagar och timmar
+    // Konvertera skillnaden till år, månader, veckor, dagar, timmar och minuter
     $years = floor($difference / (365 * 24 * 60 * 60));
     $months = floor($difference / (30 * 24 * 60 * 60));
     $weeks = floor($difference / (7 * 24 * 60 * 60));
     $days = floor($difference / (24 * 60 * 60));
     $hours = floor($difference / (60 * 60));
+    $minutes = floor($difference / (60));
 
     // Returnera resultatet baserat på den mest relevanta tidsenheten
     if ($years > 0) {
@@ -34,8 +35,10 @@ function timeElapsed($date) {
         return $weeks . " veckor sedan";
     } elseif ($days > 0) {
         return $days . " dagar sedan";
-    } else {
+    } elseif ($hours > 0) {
         return $hours . " timmar sedan";
+    } else {
+        return $minutes . " minuter sedan";
     }
 }
 

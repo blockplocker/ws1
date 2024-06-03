@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find albums from a specified artist">
     <title>Albums by Artist</title>
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="index.css">
