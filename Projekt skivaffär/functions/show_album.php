@@ -35,6 +35,7 @@ function show_album()
             // Generate a form for each rate button, passing in the ID of the record as a hidden input field
             echo "<form method='post' action=''>";
             echo "<input type='hidden' name='album_id' value='" . htmlspecialchars($row['album_id']) . "'>";
+            echo "<label for='rating'>rate</label>";
             echo "<input type='range' name='rating' id='rating' min='1' max='5' required>";
             // echo "<input type='radio' id='1' name='1' value='1'>";
             // echo "<label for='1'> 1</label>";

@@ -3,10 +3,11 @@
 /**
  * remove artist and its albums
  *
- * @param [type] $id
+ * @param [type] $id The ID of the artist to be removed
  * @return void
  */
 function remove_artist($id) {
+    // Connect to the database
     $pdo = connectToDb();
 
     try {
@@ -31,13 +32,14 @@ function remove_artist($id) {
         $pdo->rollback();
         echo "Error deleting record: " . $e->getMessage();
     }
-
+    // Release resources
     $stmtAlbums = null;
     $stmtArtist = null;
     $pdo = null;
-    // header("location: artist.php");
 }
 ?>
+
+<!-- Confirmation dialogue for deleting an artist -->
 <script>
     function confirmDelete() {
         return confirm("Are you sure you want to delete this artist?");
